@@ -1,0 +1,20 @@
+version: "3.8"
+
+services: 
+  # React app
+  olm_experiment_app:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    tty: true
+    ports: 
+      - 3000:3000
+    volumes:
+      - .:/app_experimental/olm_experiment_app
+      - /app_experimental/olm_experiment_app/node_modules
+    networks: 
+      - app_experimental
+
+networks:
+  app_experimental:
+    driver: bridge
